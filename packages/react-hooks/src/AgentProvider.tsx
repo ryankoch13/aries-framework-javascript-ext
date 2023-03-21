@@ -8,6 +8,7 @@ import BasicMessageProvider from './BasicMessageProvider'
 import ConnectionProvider from './ConnectionProvider'
 import CredentialProvider from './CredentialProvider'
 import ProofProvider from './ProofProvider'
+import QuestionAnswerProvider from './QuestionAnswerProvider'
 
 interface AgentContextInterface {
   loading: boolean
@@ -49,7 +50,9 @@ const AgentProvider: React.FC<PropsWithChildren<Props>> = ({ agent, children }) 
       <ConnectionProvider agent={agent}>
         <CredentialProvider agent={agent}>
           <ProofProvider agent={agent}>
-            <BasicMessageProvider agent={agent}>{children}</BasicMessageProvider>
+          <QuestionAnswerProvider agent={agent}>
+              <BasicMessageProvider agent={agent}>{children}</BasicMessageProvider>
+            </QuestionAnswerProvider>
           </ProofProvider>
         </CredentialProvider>
       </ConnectionProvider>
